@@ -1,0 +1,6 @@
+{
+  "semi": false,
+  "editorconfig": true,
+  "arrowParens": "avoid",
+  "trailingComma": "none"
+}
