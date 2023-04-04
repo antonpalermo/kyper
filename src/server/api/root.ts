@@ -1,5 +1,5 @@
 import { createTRPCRouter } from "@kyper/server/api/trpc"
-import { exampleRouter } from "@kyper/server/api/routers/example"
+import { taskRouter } from "@kyper/server/api/routers/task"
 
 /**
  * This is the primary router for your server.
@@ -7,7 +7,7 @@ import { exampleRouter } from "@kyper/server/api/routers/example"
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-  example: exampleRouter
+  task: taskRouter
 })
 
 // export type definition of API
