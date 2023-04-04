@@ -1,7 +1,9 @@
 import { api } from "@kyper/utils/api"
 
 export default function Tasks() {
-  const { data: tasks } = api.task.getAll.useQuery()
+  const { data: tasks } = api.task.getAll.useQuery(undefined, {
+    staleTime: 1 * 60 * 1000
+  })
 
   return (
     <div>
