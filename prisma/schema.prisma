@@ -15,12 +15,6 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Example {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 // Necessary for Next auth
 model Account {
   id                String  @id @default(cuid())
@@ -72,4 +66,13 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verification_token")
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  subject     String   @db.VarChar(225)
+  dateCreated DateTime @default(now())
+  dateUpdated DateTime @updatedAt
+
+  @@map("tasks")
 }
