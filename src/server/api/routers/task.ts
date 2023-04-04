@@ -8,7 +8,7 @@ export const taskRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       return await ctx.prisma.task.create({ data: { subject: input.subject } })
     }),
-  tasks: protectedProcedure.query(async ({ ctx }) => {
+  getAll: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.task.findMany({ take: 50 })
   })
 })

@@ -1,3 +1,4 @@
+import Tasks from "@kyper/components/Tasks"
 import { api } from "@kyper/utils/api"
 import { Form, Formik, type FormikHelpers } from "formik"
 
@@ -6,7 +7,14 @@ type TaskInput = {
 }
 
 export default function Home() {
-  const { mutate, isLoading: isCreating } = api.task.create.useMutation()
+  const ctx = api.useContext()
+
+  const { mutate, isLoading: isCreating } = api.task.create.useMutation({
+    onSuccess: async () => {
+      // TODO: add react hot toast.
+      await ctx.task.getAll.invalidate()
+    }
+  })
 
   const initialData: TaskInput = {
     subject: ""
@@ -37,6 +45,7 @@ export default function Home() {
           </Form>
         )}
       </Formik>
+      <Tasks />
     </div>
   )
 }
