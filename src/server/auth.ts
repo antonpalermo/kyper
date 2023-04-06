@@ -38,15 +38,6 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
-  callbacks: {
-    session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id
-        // session.user.role = user.role; <-- put other properties on the session here
-      }
-      return session
-    }
-  },
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -62,7 +53,10 @@ export const authOptions: NextAuthOptions = {
      *
      * @see https://next-auth.js.org/providers/github
      */
-  ]
+  ],
+  session: {
+    strategy: "jwt"
+  }
 }
 
 /**
@@ -70,9 +64,9 @@ export const authOptions: NextAuthOptions = {
  *
  * @see https://next-auth.js.org/configuration/nextjs
  */
-export const getServerAuthSession = (ctx: {
+export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"]
   res: GetServerSidePropsContext["res"]
 }) => {
-  return getServerSession(ctx.req, ctx.res, authOptions)
+  return await getServerSession(ctx.req, ctx.res, authOptions)
 }
