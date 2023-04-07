@@ -1,6 +1,8 @@
-import Tasks from "@kyper/components/Tasks"
 import { api } from "@kyper/utils/api"
 import { Form, Formik, type FormikHelpers } from "formik"
+
+import toast from "react-hot-toast"
+import Tasks from "@kyper/components/Tasks"
 
 type TaskInput = {
   subject: string
@@ -12,6 +14,7 @@ export default function Home() {
   const { mutate, isLoading: isCreating } = api.task.create.useMutation({
     onSuccess: async () => {
       // TODO: add react hot toast.
+      toast.success("Successfully created!")
       await ctx.task.getAll.invalidate()
     }
   })
