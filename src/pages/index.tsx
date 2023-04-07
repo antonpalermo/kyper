@@ -35,6 +35,7 @@ export default function Home() {
               <input
                 id="subject"
                 name="subject"
+                type="text"
                 value={values.subject}
                 onChange={handleChange}
               />
