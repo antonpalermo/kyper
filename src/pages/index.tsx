@@ -1,55 +1,16 @@
-import { api } from "@kyper/utils/api"
-import { Form, Formik, type FormikHelpers } from "formik"
-
-import toast from "react-hot-toast"
-import Tasks from "@kyper/components/Tasks"
-
-type TaskInput = {
-  subject: string
-}
+import Header from "@kyper/components/Header"
+import Head from "next/head"
 
 export default function Home() {
-  const ctx = api.useContext()
-
-  const { mutate, isLoading: isCreating } = api.task.create.useMutation({
-    onSuccess: async () => {
-      // TODO: add react hot toast.
-      toast.success("Successfully created!")
-      await ctx.task.getAll.invalidate()
-    }
-  })
-
-  const initialData: TaskInput = {
-    subject: ""
-  }
-
-  function onSubmit({ subject }: TaskInput, _: FormikHelpers<TaskInput>) {
-    mutate({ subject })
-  }
-
   return (
-    <div>
-      <Formik initialValues={initialData} onSubmit={onSubmit}>
-        {({ values, handleChange, isSubmitting }) => (
-          <Form>
-            <h1>Create Task</h1>
-            <div>
-              <label htmlFor="subject">Subject</label>
-              <input
-                id="subject"
-                name="subject"
-                type="text"
-                value={values.subject}
-                onChange={handleChange}
-              />
-            </div>
-            <button disabled={isSubmitting && isCreating} type="submit">
-              Create
-            </button>
-          </Form>
-        )}
-      </Formik>
-      <Tasks />
-    </div>
+    <main>
+      <Head>
+        <title>Kyper - Home</title>
+      </Head>
+      <Header />
+      <div className="relative mx-auto w-9/12">
+        <h2>Tasks</h2>
+      </div>
+    </main>
   )
 }

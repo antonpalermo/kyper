@@ -5,7 +5,7 @@ export type ButtonVariants = VariantProps<typeof buttonVariants>
 export const buttonVariants = cva("text-sm px-3 py-2 rounded tracking-wide", {
   variants: {
     accent: {
-      primary: "bg-green-500 text-white"
+      primary: "bg-indigo-500 text-white"
     },
     outlined: {
       true: "bg-none border"
