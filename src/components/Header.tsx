@@ -1,17 +1,13 @@
 import Avatar from "@kyper/components/Avatar"
-import Button from "@kyper/components/Button"
 
 export default function Header() {
   return (
-    <header>
-      <div className="mx-auto w-9/12 py-5">
-        <div className="inline-flex w-full items-center justify-end px-3">
-          <div className="inline-flex items-center space-x-3">
-            <Button accent="primary">Create</Button>
+      <header className="bg-slate-50 sticky top-0">
+        <div className="mx-auto w-11/12 py-5">
+          <div className="inline-flex w-full items-center justify-end px-3">
             <Avatar />
           </div>
         </div>
-      </div>
-    </header>
+      </header>
   )
 }

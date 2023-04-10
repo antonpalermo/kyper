@@ -1,15 +1,16 @@
-import Header from "@kyper/components/Header"
 import Head from "next/head"
+import Header from "@kyper/components/Header"
+import Sidenav from "@kyper/components/Sidenav"
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
       <Head>
         <title>Kyper - Home</title>
       </Head>
       <Header />
-      <div className="relative mx-auto w-9/12">
-        <h2>Tasks</h2>
+      <div className="mx-auto w-11/12">
+        <Sidenav />
       </div>
     </main>
   )
