@@ -9,7 +9,7 @@ export default function Home() {
         <title>Kyper - Home</title>
       </Head>
       <Header />
-      <div className="mx-auto w-11/12">
+      <div className="mx-auto w-11/12 px-3 py-5">
         <Sidenav />
       </div>
     </main>
