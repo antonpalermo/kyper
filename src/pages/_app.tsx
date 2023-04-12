@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react"
 
 import { api } from "@kyper/utils/api"
 
+import "preline"
 import "@kyper/styles/globals.css"
 
 const MyApp: AppType<{ session: Session | null }> = ({
