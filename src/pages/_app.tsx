@@ -1,18 +1,22 @@
 import { type AppType } from "next/app"
 import { type Session } from "next-auth"
 
+import { useEffect } from "react"
 import { Toaster } from "react-hot-toast"
 import { SessionProvider } from "next-auth/react"
 
 import { api } from "@kyper/utils/api"
 
-import "preline"
 import "@kyper/styles/globals.css"
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps }
 }) => {
+  useEffect(() => {
+    import("preline")
+  }, [])
+
   return (
     <SessionProvider session={session}>
       <Toaster
