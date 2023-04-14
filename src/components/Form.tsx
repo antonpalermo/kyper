@@ -11,11 +11,11 @@ type TaskInput = {
 export default function FormSub() {
   const ctx = api.useContext()
 
-  const { mutate, isLoading: isCreating } = api.task.create.useMutation({
+  const { mutate, isLoading: isCreating } = api.notes.create.useMutation({
     onSuccess: async () => {
       // TODO: add react hot toast.
       toast.success("Successfully created!")
-      await ctx.task.getAll.invalidate()
+      await ctx.notes.getAll.invalidate()
     }
   })
 
