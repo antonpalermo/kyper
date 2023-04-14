@@ -60,7 +60,10 @@ export default function Sidenav() {
       >
         <div className="mb-5 inline-flex w-full items-center justify-between">
           <h1 className="text-sm font-semibold text-slate-500">Notes</h1>
-          <button className="rounded bg-indigo-500 p-1 text-white">
+          <button
+            className="rounded bg-indigo-500 p-1 text-white"
+            data-hs-overlay="#hs-vertically-centered-modal"
+          >
             <PlusIcon className="h-5 w-5" />
           </button>
         </div>
